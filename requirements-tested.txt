@@ -1,0 +1,8 @@
+# Tested on Python 3.12.14. Platform-specific dependencies may be added by pip.
+asgiref==3.13.0
+Django==5.2.19
+gunicorn==26.2.0; platform_system != "Windows"
+Pillow==13.0.0
+python-dotenv==1.2.4
+sqlparse==0.6.1
+whitenoise==6.12.0

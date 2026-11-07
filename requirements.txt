@@ -1,0 +1,5 @@
+Django>=5.2.19,<5.3
+Pillow>=11
+whitenoise>=6.9,<7
+python-dotenv>=1.1,<2
+gunicorn>=23; platform_system != "Windows"

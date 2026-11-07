@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0d12">
+  <meta name="description" content="{{ profile.intro|truncatechars:155 }}">
+  <title>{% block title %}{{ profile.name }} — {{ profile.role }}{% endblock %}</title>
+  <link rel="icon" href="{% static 'portfolio/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'portfolio/site.css' %}">
+  <script src="{% static 'portfolio/site.js' %}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="{% url 'home' %}" aria-label="{{ profile.name }} home"><span class="brand-mark">f<span>.</span></span><span>FARIS<span class="brand-small">DEVELOPER / CREATOR</span></span></a>
+    <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>☰</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="{% url 'home' %}#work">Work</a><a href="{% url 'home' %}#about">About</a><a href="{% url 'home' %}#skills">Skills</a><a href="{% url 'home' %}#journey">Journey</a>
+    </nav>
+    <a class="header-cta" href="{% url 'home' %}#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+  </header>
+  {% if is_owner %}<div class="owner-bar wrap"><span>You’re viewing your portfolio as its owner.</span><a href="{% url 'owner_admin:index' %}">Open your studio ↗</a></div>{% endif %}
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer class="site-footer wrap">
+    <a class="brand-mark small" href="{% url 'home' %}" aria-label="Back to home">f<span>.</span></a>
+    <p>© {% now 'Y' %} {{ profile.name }}.</p>
+    <div class="footer-links">{% if profile.github_url %}<a href="{{ profile.github_url }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>{% endif %}{% if profile.linkedin_url %}<a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>{% endif %}<a href="{% url 'owner_admin:index' %}">Owner access</a><a href="#main">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>

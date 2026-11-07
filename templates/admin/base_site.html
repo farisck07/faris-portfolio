@@ -1,0 +1,5 @@
+{% extends 'admin/base.html' %}{% load static %}
+{% block title %}{{ title }} | Portfolio studio{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'portfolio/admin.css' %}">{% endblock %}
+{% block branding %}<div class="studio-brand"><span>f.</span><a href="{% url 'owner_admin:index' %}">Faris / Studio</a></div>{% endblock %}
+{% block nav-global %}{% endblock %}
